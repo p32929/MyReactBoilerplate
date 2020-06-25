@@ -6,6 +6,8 @@ A simple ReactJS boilerplate, made by me, for me...
 * Material UI
 * Overmind
 * React Router
+* GH-Pages
 * 
 
 # Live:
+https://p32929.github.io/MyReactBoilerplate

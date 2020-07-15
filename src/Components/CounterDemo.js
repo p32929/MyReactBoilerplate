@@ -1,11 +1,14 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Grid from "@material-ui/core/Grid";
 import {useOvermind} from "../Others/OvermindHelper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
+import {NodeFetchHelper} from "../Others/NodeFetchHelper";
 
 const CounterDemo = () => {
     const {state, actions} = useOvermind()
+    const [sss, setStatus] = useState("")
+    const [jjj, setJson] = useState("")
 
     return (
         <Grid style={{padding: 48}} container direction='column' justify='center' alignItems='center'
@@ -19,6 +22,7 @@ const CounterDemo = () => {
                     actions.increase(-1)
                 }}>-</Button>
             </Grid>
+
         </Grid>
     );
 };

@@ -7,6 +7,7 @@ A simple ReactJS boilerplate, made by me, for me...
 * Overmind
 * React Router
 * GH-Pages
+* NodeFetchHelper
 * 
 
 # Live:

@@ -7,8 +7,10 @@ const DELETE = "DELETE";
 //
 export class NodeFetchHelper {
     static get = (url, params, headers, callback) => {
-        params = new URLSearchParams(params);
-        url = url + "?" + params
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
 
         fetch(url, {
             method: GET,
@@ -25,8 +27,10 @@ export class NodeFetchHelper {
     }
 
     static post = (url, params, headers, body, callback) => {
-        params = new URLSearchParams(params);
-        url = url + "?" + params
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
 
         fetch(url, {
             method: POST,
@@ -46,8 +50,10 @@ export class NodeFetchHelper {
     }
 
     static put = (url, params, headers, body, callback) => {
-        params = new URLSearchParams(params);
-        url = url + "?" + params
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
 
         fetch(url, {
             method: PUT,
@@ -67,8 +73,10 @@ export class NodeFetchHelper {
     }
 
     static deletee = (url, params, headers, callback) => {
-        params = new URLSearchParams(params);
-        url = url + "?" + params
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
 
         fetch(url, {
             method: DELETE,

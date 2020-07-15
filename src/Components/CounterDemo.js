@@ -7,8 +7,6 @@ import {NodeFetchHelper} from "../Others/NodeFetchHelper";
 
 const CounterDemo = () => {
     const {state, actions} = useOvermind()
-    const [sss, setStatus] = useState("")
-    const [jjj, setJson] = useState("")
 
     return (
         <Grid style={{padding: 48}} container direction='column' justify='center' alignItems='center'

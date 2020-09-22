@@ -5,11 +5,15 @@ import * as serviceWorker from './serviceWorker';
 import {Provider} from "overmind-react";
 import {overmind} from './Others/OvermindHelper'
 import CounterDemo from "./Components/CounterDemo";
+import {ThemeProvider} from '@material-ui/core/styles';
+import {theme} from './Others/Theme'
 
 ReactDOM.render(
     <React.StrictMode>
         <Provider value={overmind}>
-            <CounterDemo/>
+            <ThemeProvider theme={theme}>
+                <CounterDemo/>
+            </ThemeProvider>
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

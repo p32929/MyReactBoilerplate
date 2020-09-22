@@ -3,7 +3,12 @@ import Grid from "@material-ui/core/Grid";
 import {useOvermind} from "../Others/OvermindHelper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import {NodeFetchHelper} from "../Others/NodeFetchHelper";
+import { makeStyles } from '@material-ui/core/styles';
+import {theme} from "../Others/Theme";
+
+const useStyle = makeStyles((theme) => ({
+
+}))
 
 const CounterDemo = () => {
     const {state, actions} = useOvermind()

@@ -23,7 +23,12 @@ export class NodeFetchHelper {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            });
+            })
+            .catch((e) => {
+                callback(500, {
+                    error: e
+                })
+            })
     }
 
     static post = (url, params, headers, body, callback) => {
@@ -46,7 +51,12 @@ export class NodeFetchHelper {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            });
+            })
+            .catch((e) => {
+                callback(500, {
+                    error: e
+                })
+            })
     }
 
     static put = (url, params, headers, body, callback) => {
@@ -64,12 +74,18 @@ export class NodeFetchHelper {
             body: JSON.stringify({
                 ...body
             })
-        }).then(res => Promise.all([res.status, res.json()]))
+        })
+            .then(res => Promise.all([res.status, res.json()]))
             .then(([status, jsonData]) => {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            });
+            })
+            .catch((e) => {
+                callback(500, {
+                    error: e
+                })
+            })
     }
 
     static deletee = (url, params, headers, callback) => {
@@ -89,6 +105,11 @@ export class NodeFetchHelper {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            });
+            })
+            .catch((e) => {
+                callback(500, {
+                    error: e
+                })
+            })
     }
 }

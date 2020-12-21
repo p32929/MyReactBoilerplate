@@ -23,12 +23,7 @@ export class NodeFetchHelper {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            })
-            .catch((e) => {
-                callback(500, {
-                    error: e
-                })
-            })
+            });
     }
 
     static post = (url, params, headers, body, callback) => {
@@ -51,12 +46,7 @@ export class NodeFetchHelper {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            })
-            .catch((e) => {
-                callback(500, {
-                    error: e
-                })
-            })
+            });
     }
 
     static put = (url, params, headers, body, callback) => {
@@ -74,18 +64,12 @@ export class NodeFetchHelper {
             body: JSON.stringify({
                 ...body
             })
-        })
-            .then(res => Promise.all([res.status, res.json()]))
+        }).then(res => Promise.all([res.status, res.json()]))
             .then(([status, jsonData]) => {
                 console.log(jsonData);
                 console.log(status);
                 callback(status, jsonData)
-            })
-            .catch((e) => {
-                callback(500, {
-                    error: e
-                })
-            })
+            });
     }
 
     static deletee = (url, params, headers, callback) => {
@@ -100,6 +84,30 @@ export class NodeFetchHelper {
                 ...headers,
                 "Content-Type": "application/json",
             })
+        }).then(res => Promise.all([res.status, res.json()]))
+            .then(([status, jsonData]) => {
+                console.log(jsonData);
+                console.log(status);
+                callback(status, jsonData)
+            });
+    }
+
+    static upload = (url, params, file, callback) => {
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
+
+        var formData = new FormData()
+        formData.append('type', 'file')
+        formData.append('image', file)
+
+        fetch(url, {
+            method: POST,
+            headers: {
+                Accept: 'application/json',
+            },
+            body: formData
         }).then(res => Promise.all([res.status, res.json()]))
             .then(([status, jsonData]) => {
                 console.log(jsonData);

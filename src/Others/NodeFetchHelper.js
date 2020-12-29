@@ -1,3 +1,7 @@
+// Created by p32929
+// URL: https://gist.github.com/p32929/6143fafc629dcc1e7352d8ca268d11d1
+// Feel free to give it a star
+
 //
 const GET = "GET";
 const POST = "POST";
@@ -92,7 +96,7 @@ export class NodeFetchHelper {
             });
     }
 
-    static upload = (url, params, file, callback) => {
+    static upload = (url, params, fileKeyString, fileObj, callback) => {
         if (params) {
             params = new URLSearchParams(params);
             url = url + "?" + params
@@ -100,7 +104,7 @@ export class NodeFetchHelper {
 
         var formData = new FormData()
         formData.append('type', 'file')
-        formData.append('image', file)
+        formData.append(fileKeyString, fileObj)
 
         fetch(url, {
             method: POST,

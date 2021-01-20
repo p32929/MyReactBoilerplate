@@ -9,6 +9,30 @@ const PUT = "PUT";
 const DELETE = "DELETE";
 
 //
+const afterFetchDone = (fetchObj, callback) => {
+    // Callback(status, jsonData, okay)
+
+    fetchObj
+        .then(res => Promise.all([res.status, res.json()]))
+        .then(([status, jsonData]) => {
+            const ok = status < 400;
+            console.log(jsonData);
+            console.log(status);
+            if (callback) {
+                callback(status, jsonData, ok)
+            }
+        })
+        .catch((e) => {
+            console.log(e.toString());
+            if (callback) {
+                callback(520, {
+                    error: e,
+                }, false)
+            }
+        })
+}
+
+//
 export class NodeFetchHelper {
     static get = (url, params, headers, callback) => {
         if (params) {
@@ -16,18 +40,14 @@ export class NodeFetchHelper {
             url = url + "?" + params
         }
 
-        fetch(url, {
+        const fetchObj = fetch(url, {
             method: GET,
             headers: new Headers({
                 ...headers,
                 "Content-Type": "application/json",
             })
-        }).then(res => Promise.all([res.status, res.json()]))
-            .then(([status, jsonData]) => {
-                console.log(jsonData);
-                console.log(status);
-                callback(status, jsonData)
-            });
+        })
+        afterFetchDone(fetchObj, callback)
     }
 
     static post = (url, params, headers, body, callback) => {
@@ -36,7 +56,7 @@ export class NodeFetchHelper {
             url = url + "?" + params
         }
 
-        fetch(url, {
+        const fetchObj = fetch(url, {
             method: POST,
             headers: new Headers({
                 ...headers,
@@ -45,12 +65,8 @@ export class NodeFetchHelper {
             body: JSON.stringify({
                 ...body
             })
-        }).then(res => Promise.all([res.status, res.json()]))
-            .then(([status, jsonData]) => {
-                console.log(jsonData);
-                console.log(status);
-                callback(status, jsonData)
-            });
+        })
+        afterFetchDone(fetchObj, callback)
     }
 
     static put = (url, params, headers, body, callback) => {
@@ -59,7 +75,7 @@ export class NodeFetchHelper {
             url = url + "?" + params
         }
 
-        fetch(url, {
+        const fetchObj = fetch(url, {
             method: PUT,
             headers: new Headers({
                 ...headers,
@@ -68,12 +84,8 @@ export class NodeFetchHelper {
             body: JSON.stringify({
                 ...body
             })
-        }).then(res => Promise.all([res.status, res.json()]))
-            .then(([status, jsonData]) => {
-                console.log(jsonData);
-                console.log(status);
-                callback(status, jsonData)
-            });
+        })
+        afterFetchDone(fetchObj, callback)
     }
 
     static deletee = (url, params, headers, callback) => {
@@ -82,18 +94,14 @@ export class NodeFetchHelper {
             url = url + "?" + params
         }
 
-        fetch(url, {
+        const fetchObj = fetch(url, {
             method: DELETE,
             headers: new Headers({
                 ...headers,
                 "Content-Type": "application/json",
             })
-        }).then(res => Promise.all([res.status, res.json()]))
-            .then(([status, jsonData]) => {
-                console.log(jsonData);
-                console.log(status);
-                callback(status, jsonData)
-            });
+        })
+        afterFetchDone(fetchObj, callback)
     }
 
     static upload = (url, params, fileKeyString, fileObj, callback) => {
@@ -106,22 +114,29 @@ export class NodeFetchHelper {
         formData.append('type', 'file')
         formData.append(fileKeyString, fileObj)
 
-        fetch(url, {
+        const fetchObj = fetch(url, {
             method: POST,
             headers: {
-                Accept: 'application/json',
+                "Content-Type": "application/json",
             },
             body: formData
-        }).then(res => Promise.all([res.status, res.json()]))
-            .then(([status, jsonData]) => {
-                console.log(jsonData);
-                console.log(status);
-                callback(status, jsonData)
-            })
-            .catch((e) => {
-                callback(500, {
-                    error: e
-                })
-            })
+        })
+        afterFetchDone(fetchObj, callback)
+    }
+
+    static uploadUsingFormData(url, params, formData, callback) {
+        if (params) {
+            params = new URLSearchParams(params);
+            url = url + "?" + params
+        }
+
+        const fetchObj = fetch(url, {
+            method: POST,
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: formData
+        })
+        afterFetchDone(fetchObj, callback)
     }
 }

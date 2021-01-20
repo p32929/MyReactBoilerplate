@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Grid from "@material-ui/core/Grid";
 import {useOvermind} from "../Others/OvermindHelper";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
-import { makeStyles } from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import {theme} from "../Others/Theme";
+import {NodeFetchHelper} from "../Others/NodeFetchHelper";
 
 const useStyles = makeStyles((theme) => ({
     //
@@ -13,6 +14,12 @@ const useStyles = makeStyles((theme) => ({
 const CounterDemo = () => {
     const {state, actions} = useOvermind()
     const classes = useStyles();
+
+    useEffect(() => {
+        NodeFetchHelper.get('https://api.npoint.io/6db6479a282d181d7ceb', null, null, (status, data, ok) => {
+            console.log("OK: " + ok)
+        })
+    }, [])
 
     return (
         <Grid style={{padding: 48}} container direction='column' justify='center' alignItems='center'

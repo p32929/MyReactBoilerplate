@@ -15,11 +15,11 @@ const CounterDemo = () => {
     const {state, actions} = useOvermind()
     const classes = useStyles();
 
-    useEffect(() => {
-        NodeFetchHelper.get('https://api.npoint.io/6db6479a282d181d7ceb', null, null, (status, data, ok) => {
-            console.log("OK: " + ok)
-        })
-    }, [])
+    // useEffect(() => {
+    //     NodeFetchHelper.get('https://api.npoint.io/6db6479a282d181d7ceb', null, null, (status, data, ok) => {
+    //         console.log("OK: " + ok)
+    //     })
+    // }, [])
 
     return (
         <Grid style={{padding: 48}} container direction='column' justify='center' alignItems='center'

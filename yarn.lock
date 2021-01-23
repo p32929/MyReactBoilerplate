@@ -4655,6 +4655,13 @@ faye-websocket@~0.11.1:
   dependencies:
     websocket-driver ">=0.5.1"
 
+fayfetch@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/fayfetch/-/fayfetch-1.0.2.tgz#974e42860312681bf49d3b76b48d446f6e1cc6eb"
+  integrity sha512-51VywAPvHsbov0mamEsL+g7kjl+qd35h+qnOS/Z9gfp6jRchyiiA8MDIODmfOoTeN24dD+1PX3chRu7NDHsDxg==
+  dependencies:
+    node-fetch "^2.6.1"
+
 fb-watchman@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/fb-watchman/-/fb-watchman-2.0.1.tgz#fc84fb39d2709cf3ff6d743706157bb5708a8a85"
@@ -7290,6 +7297,11 @@ no-case@^3.0.3:
   dependencies:
     lower-case "^2.0.1"
     tslib "^1.10.0"
+
+node-fetch@^2.6.1:
+  version "2.6.1"
+  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.1.tgz#045bd323631f76ed2e2b55573394416b639a0052"
+  integrity sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==
 
 node-forge@0.9.0:
   version "0.9.0"

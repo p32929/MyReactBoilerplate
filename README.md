@@ -23,7 +23,7 @@ If you like my works and want to support me/my works, feel free to support or do
 * Overmind
 * React Router
 * GH-Pages
-* NodeFetchHelper
+* FayFetch
 * 
 
 # Live:
